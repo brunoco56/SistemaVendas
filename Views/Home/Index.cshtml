@@ -1,15 +1,4 @@
-﻿@using SistemaVendas.Entidades
-@{
-    ViewData["Title"] = "Home Page";
-}
-
-@model List<Categoria>;
-
-@foreach (var item in Model)
-{
-    var aux = item.Codigo + "_ " + item.Descricao;
-    <h5>@aux</h5><br/>
-}
+﻿
 
 
 <div class="text-center">
