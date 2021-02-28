@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using SistemaVendas.DAL;
 using SistemaVendas.Entidades;
 using SistemaVendas.Models;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -25,9 +23,11 @@ namespace SistemaVendas.Controllers
         
         public IActionResult Index()
         {
-            IEnumerable<Categoria> lista = Repositorio.Categoria.ToList();
-
-            return View(lista);
+            Categoria objCategoria = Repositorio.Categoria.Where(x => x.Codigo ==1).FirstOrDefault();
+            objCategoria.Descricao = "Teste novamente";
+            Repositorio.Entry(objCategoria).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            Repositorio.SaveChanges();
+            return View(objCategoria);
         }
 
         public IActionResult Privacy()

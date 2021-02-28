@@ -13,7 +13,7 @@
             return View(lista);
 
             NA Index
-            _______________________
+            _____________________________________________
             @using SistemaVendas.Entidades
             @{
                 ViewData["Title"] = "Home Page";
@@ -27,3 +27,12 @@
               <h5>@aux</h5><br/>
             }
             ___________________________________________
+
+            Alteração de Dados
+
+            Categoria objCategoria = Repositorio.Categoria.Where(x => x.Codigo ==1).FirstOrDefault();
+            objCategoria.Descricao = "Teste novamente";
+            Repositorio.Entry(objCategoria).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            Repositorio.SaveChanges();
+            return View();
+            _________________________________________
