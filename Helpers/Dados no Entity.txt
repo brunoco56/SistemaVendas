@@ -1,0 +1,29 @@
+﻿            
+            //Criar Dados e Salvar
+
+            Categoria categoria = new Categoria();
+            categoria.Descricao = "Teste";
+            Repositorio.Categoria.Add(categoria);
+            Repositorio.SaveChanges();
+            ____________________________________________
+
+            Buscar dados
+
+            IEnumerable<Categoria> lista = Repositorio.Categoria.ToList();
+            return View(lista);
+
+            NA Index
+            _______________________
+            @using SistemaVendas.Entidades
+            @{
+                ViewData["Title"] = "Home Page";
+             }
+
+            @model List<Categoria>;
+
+            @foreach (var item in Model)
+            {
+               var aux = item.Codigo + "_ " + item.Descricao;
+              <h5>@aux</h5><br/>
+            }
+            ___________________________________________

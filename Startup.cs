@@ -23,6 +23,7 @@ namespace SistemaVendas
             services.AddControllersWithViews();
             services.AddConnections();
             services.AddSession();            
+            // ESTUDAR ISSO =>>>>>>>>>>>>> services.AddSingleton<IHttpContextAcessor, HttpContextAcessor>();
             // Setting the Database 
             services.AddDbContext<ApplicationDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("AppCon")));

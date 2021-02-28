@@ -13,10 +13,7 @@ namespace SistemaVendas.DAL
         public DbSet<VendaProdutos> VendaProdutos { get; set; }
 
         // Construtor que chama o Banco de Dados
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-
-        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){ }
         protected override void OnModelCreating(ModelBuilder builder) 
         {  
             // AQUI SE MODELA O DBCONTEXT
