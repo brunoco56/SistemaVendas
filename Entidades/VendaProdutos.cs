@@ -14,6 +14,7 @@ namespace SistemaVendas.Entidades
         public Decimal ValorTotal { get; set; }
         public Produto Produto { get; set; }
         public Venda Venda { get; set; }
+       
 
     }
 }
