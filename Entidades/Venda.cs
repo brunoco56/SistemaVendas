@@ -11,7 +11,11 @@ namespace SistemaVendas.Entidades
         public DateTime Data { get; set; }
 
         [ForeignKey("Cliente")]
-        public int CodigoCategoria { get; set; }
+        public int CodigoCliente { get; set; }
+        public Cliente Cliente { get; set; }
+        public Decimal Total { get; set; }
+
+
 
     }
 }

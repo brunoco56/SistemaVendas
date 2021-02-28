@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaVendas.Entidades
 {
@@ -7,6 +8,7 @@ namespace SistemaVendas.Entidades
         [Key]
         public int? Codigo { get; set; }
         public string Descricao { get; set; }
-       
+        public ICollection<Produto> Produtos { get; set; }
+
     }
 }
