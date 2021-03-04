@@ -1,1 +1,43 @@
-﻿
+﻿@model List<SistemaVendas.Entidades.Categoria>;
+    <div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input type="search" id="search-input" class="form-control rounded" placeholder="Procurar" aria-label="Procurar"
+                               aria-describedby="search-addon" />
+                        <button type="button" id="search-button" class="btn btn-outline-primary">Procurar</button>
+                    </div>
+                </div><br />
+
+                      <div class="col-sm-7">                          
+                      </div><br />
+
+                <div class="col-sm-2">
+                    <input type="button" value="Cadastrar" class="btn btn-info"
+                           onclick="location.href='@Url.Action("Cadastro")'" />
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <table id="tabela_cadastro" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Descrição</th>
+                    
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <th scope="row">@item.Codigo</th>
+                        <th><a href="../Categoria/Cadastro\@item.Codigo"> @item.Descricao</a></th>                        
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>

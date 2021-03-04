@@ -7,8 +7,12 @@
             Repositorio.SaveChanges();
             ____________________________________________
 
-            Buscar dados
+                    Buscar dados
 
+            //(preste atenção aqui quanto o repositorio)
+           
+            IEnumerable<Categoria> lista = mContext.Categoria.ToList();
+                   
             IEnumerable<Categoria> lista = Repositorio.Categoria.ToList();
             return View(lista);
 
