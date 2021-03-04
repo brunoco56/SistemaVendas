@@ -19,8 +19,14 @@ namespace SistemaVendas.Controllers
         {
             IEnumerable<Categoria> lista = mContext.Categoria.ToList();
             //Dispose libera memória
-            mContext.Dispose();             
+            mContext.Dispose();
             return View(lista);
+        }
+
+        [HttpGet]
+        public IActionResult Cadastro(int ? id)
+        {
+            return View();
         }
     }
 }
