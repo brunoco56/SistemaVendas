@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SistemaVendas.DAL;
 using SistemaVendas.Entidades;
+using SistemaVendas.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +26,43 @@ namespace SistemaVendas.Controllers
         }
 
         [HttpGet]
-        public IActionResult Cadastro(int ? id)
+        public IActionResult Cadastro(int? id)
         {
             return View();
         }
+
+
+
+
+        public async Task<IActionResult> Detalhe(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            // IEnumerable<Categoria> lista = mContext.Categoria.ToList();
+            CategoriaViewModel funcionarios = new CategoriaViewModel();
+           
+                
+              var funcionario = await mContext.Categoria
+                .FirstOrDefaultAsync(m => m.Codigo == id);
+            if (id != null)
+            {
+                funcionarios.Codigo = funcionario.Codigo;
+                funcionarios.Descricao = funcionario.Descricao;
+                return View(funcionarios);               
+            }
+            else { return NotFound(); }            
+        }
+
+
+
+
+
+
+
+
+
+      
     }
 }

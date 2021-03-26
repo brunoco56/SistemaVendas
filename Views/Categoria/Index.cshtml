@@ -27,6 +27,7 @@
                 <tr>
                     <th scope="col">Código</th>
                     <th scope="col">Descrição</th>
+                    <th> Ações</th>
                     
                 </tr>
             </thead>
@@ -35,7 +36,9 @@
                 <tbody>
                     <tr>
                         <th scope="row">@item.Codigo</th>
-                        <th><a href="../Categoria/Cadastro\@item.Codigo"> @item.Descricao</a></th>                        
+                        <th><a href="../Categoria/Detalhe\@item.Codigo"> @item.Descricao</a></th>
+                        <th><button class="btn btn-danger" href="">Excluir</button></th>
+                        <th><button class="btn btn-success" href="">Alterar</button></th>
                     </tr>
                 </tbody>
             }
