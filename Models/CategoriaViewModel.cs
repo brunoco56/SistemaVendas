@@ -7,7 +7,7 @@ namespace SistemaVendas.Models
 {
     public class CategoriaViewModel
     {
-        public int? Codigo { get; set; }
-        public string Descricao { get; set; }
+        public int ? Codigo { get; set; }
+        public string Descricao { get; set; }        
     }
 }

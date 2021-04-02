@@ -1,10 +1,16 @@
 ﻿
 <H2>Categorias</H2>
 @model SistemaVendas.Models.CategoriaViewModel
-<hr/>
-  <form asp-controller="Categoria"    asp-action="Cadastro"   method="post"   >
-      <input type="hidden" asp-for="Codigo" value="@Model.Codigo"/>
-      <input asp-for="Descricao" type="text" value="@Model.Descricao" class="form-control">
-  </form>
+<hr />
+<form asp-controller="Categoria" asp-action="Cadastro" method="post">
+    <input type="hidden" asp-for="Codigo" value="@Model.Codigo" />
+    <input asp-for="Descricao" type="text" value="@Model.Descricao" class="form-control">
+</form>
 
+<button type="button" class="btn btn-primary" id="formulario" onclick="formulario()"> editar</button>
 
+<script>
+    function formulario() {
+        window.location = window.origin + " \\Categoria\\Cadastro";
+    }
+</script>

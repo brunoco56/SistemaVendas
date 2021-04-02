@@ -7,7 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace SistemaVendas.Controllers
 {
@@ -33,10 +35,10 @@ namespace SistemaVendas.Controllers
             {
                 return View(e.Message);
             }
-            
+
         }
 
-        [HttpGet]
+       
         public IActionResult Cadastro(int? id)
         {
 
@@ -46,16 +48,26 @@ namespace SistemaVendas.Controllers
             }
             // IEnumerable<Categoria> lista = mContext.Categoria.ToList();
             CategoriaViewModel categorias = new CategoriaViewModel();
-
-            var categoria =  mContext.Categoria
-              .FirstOrDefault(m => m.Codigo == id);
-            if (id != null)
+            try
             {
-                categorias.Codigo = categoria.Codigo;
-                categorias.Descricao = categoria.Descricao;
-                return View(categorias);
+                var categoria = mContext.Categoria.FirstOrDefault(m => m.Codigo == id);
+
+                if (id != null && categoria.Codigo != null && categoria.Codigo==id)
+                {
+                    categorias.Codigo = categoria.Codigo;
+                    categorias.Descricao = categoria.Descricao;
+                    return View(categorias);
+                }
+                else
+                {
+                    throw new HttpResponseException(HttpStatusCode.NotFound);
+                }
             }
-            else { return NotFound(); }
+            catch (Exception)
+            {
+                //return NotFound();
+                return NoContent();
+            }
         }
 
 
@@ -66,18 +78,18 @@ namespace SistemaVendas.Controllers
                 return NotFound();
             }
             // IEnumerable<Categoria> lista = mContext.Categoria.ToList();
-            CategoriaViewModel categorias = new CategoriaViewModel();          
-                
-              var categoria = await mContext.Categoria
-                .FirstOrDefaultAsync(m => m.Codigo == id);
+            CategoriaViewModel categorias = new CategoriaViewModel();
+
+            var categoria = await mContext.Categoria
+              .FirstOrDefaultAsync(m => m.Codigo == id);
             if (id != null)
             {
                 categorias.Codigo = categoria.Codigo;
                 categorias.Descricao = categoria.Descricao;
-                return View(categorias);               
+                return View(categorias);
             }
-            else { return NotFound(); }            
+            else { return NotFound(); }
         }
-      
+
     }
 }
